@@ -1,10 +1,6 @@
 require 'rspec'
 require './sorted_array.rb'
 
-shared_examples "return the array" do
-
-end
-
 describe SortedArray do
   before do
     @source = [2,3,4,7,9]
@@ -39,16 +35,20 @@ describe SortedArray do
           end.to yield_successive_args(2,3,4,7,9) 
         end
 
-        it 'should apply the action in the block to each element and return the new array' do
-          @sorted_array.map { |el| el * 2 }.should == [4,6,8,14,18]
+        it 'should apply the action in the block to each element, lreturning array' do
+          # fill this spec in with a meaningful example
         end
       end
     end
 
     describe "that update the original array" do
       describe :map! do
-        it 'should return  array' do
-          pending
+        it 'the original array should be updated' do
+          # fill this in
+        end
+
+        it 'should apply the action in the block to each element, lreturning array' do
+          # this is just the same as the example above
         end
       end
     end
