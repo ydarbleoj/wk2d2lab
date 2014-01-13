@@ -55,14 +55,14 @@ describe SortedArray do
   end
 
   describe :find do
-    it 'should return the value, if it''s found' do
-      pending
+    it "does not currently have any examples for it" do
+      pending "define some examples"
     end
   end
 
   describe :inject do
-    it 'should accumulate a value based on the function passed' do
-      pending
+    it "does not currently have any examples for it" do
+      pending "define some examples"
     end
   end
 end
