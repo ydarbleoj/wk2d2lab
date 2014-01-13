@@ -35,8 +35,8 @@ describe SortedArray do
           end.to yield_successive_args(2,3,4,7,9) 
         end
 
-        it 'should apply the action in the block to each element, lreturning array' do
-          # fill this spec in with a meaningful example
+        it 'should apply the action in the block to each element, returning array' do
+          pending "fill this spec in with a meaningful example"
         end
       end
     end
@@ -44,19 +44,25 @@ describe SortedArray do
     describe "that update the original array" do
       describe :map! do
         it 'the original array should be updated' do
-          # fill this in
+          pending "fill this spec in with a meaningful example"
         end
 
-        it 'should apply the action in the block to each element, lreturning array' do
-          # this is just the same as the example above
+        it 'should apply the action in the block to each element, returning array' do
+          pending "this is just the same as the example above"
         end
       end
     end
   end
 
   describe :find do
+    it 'should return the value, if it''s found' do
+      pending
+    end
   end
 
   describe :inject do
+    it 'should accumulate a value based on the function passed' do
+      pending
+    end
   end
 end
