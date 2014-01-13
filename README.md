@@ -10,3 +10,7 @@ This lab builds on your implementation of SortedArray from [The Sorted Array Lab
 
 * Implement `SortedArray#find`, which finds an element. The method should return `nil`.
 
+Bonus
+
+Implement `SortedArray#inject`. See if you can get it to work exactly
+like `Array#inject`. 
