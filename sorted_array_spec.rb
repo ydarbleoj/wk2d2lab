@@ -33,7 +33,7 @@ describe SortedArray do
 
         it_should_behave_like "yield to all elements in sorted array", :map
 
-        it 'should apply the action in the block to each element, returning array' do
+        it 'creates a new array containing the values returned by the block' do
           pending "fill this spec in with a meaningful example"
         end
       end
