@@ -58,7 +58,7 @@ describe SortedArray do
     it_should_behave_like "yield to all elements in sorted array", :find
 
     it "does not currently have any examples for it" do
-      pending "define some examples"
+      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
     end
   end
 
@@ -66,7 +66,7 @@ describe SortedArray do
     it_should_behave_like "yield to all elements in sorted array", :inject
 
     it "does not currently have any examples for it" do
-      pending "define some examples"
+      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-inject"
     end
   end
 end
