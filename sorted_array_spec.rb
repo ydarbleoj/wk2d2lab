@@ -1,39 +1,37 @@
 require 'rspec'
 require './sorted_array.rb'
 
+shared_examples "yield to all elements in sorted array" do |method|
+    specify do 
+      expect do |b| 
+        sorted_array.send(method, &b) 
+      end.to yield_successive_args(2,3,4,7,9) 
+    end
+end
+
 describe SortedArray do
-  before do
-    @source = [2,3,4,7,9]
-    @sorted_array = SortedArray.new @source
-  end
+  let(:source) { [2,3,4,7,9] }
+  let(:sorted_array) { SortedArray.new source }
 
   describe "iterators" do
     describe "that don't update the original array" do 
       describe :each do
         context 'when passed a block' do
-          specify do 
-            expect do |b| 
-              @sorted_array.each(&b) 
-            end.to yield_successive_args(2,3,4,7,9) 
-          end
+          it_should_behave_like "yield to all elements in sorted array", :each
         end
 
         it 'should return the array' do
-          @sorted_array.each {|el| el }.should eq @source
+          sorted_array.each {|el| el }.should eq source
         end
       end
 
       describe :map do
         it 'the original array should not be changed' do
-          original_array = @sorted_array.internal_arr
-          expect { @sorted_array.map {|el| el } }.to_not change { original_array }
+          original_array = sorted_array.internal_arr
+          expect { sorted_array.map {|el| el } }.to_not change { original_array }
         end
 
-        specify do 
-          expect do |b| 
-            @sorted_array.map(&b) 
-          end.to yield_successive_args(2,3,4,7,9) 
-        end
+        it_should_behave_like "yield to all elements in sorted array", :map
 
         it 'should apply the action in the block to each element, returning array' do
           pending "fill this spec in with a meaningful example"
@@ -47,6 +45,8 @@ describe SortedArray do
           pending "fill this spec in with a meaningful example"
         end
 
+        it_should_behave_like "yield to all elements in sorted array", :map!
+
         it 'should apply the action in the block to each element, returning array' do
           pending "this is just the same as the example above"
         end
@@ -55,12 +55,16 @@ describe SortedArray do
   end
 
   describe :find do
+    it_should_behave_like "yield to all elements in sorted array", :find
+
     it "does not currently have any examples for it" do
       pending "define some examples"
     end
   end
 
   describe :inject do
+    it_should_behave_like "yield to all elements in sorted array", :inject
+
     it "does not currently have any examples for it" do
       pending "define some examples"
     end
