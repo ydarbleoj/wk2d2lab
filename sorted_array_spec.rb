@@ -47,7 +47,7 @@ describe SortedArray do
 
         it_should_behave_like "yield to all elements in sorted array", :map!
 
-        it 'should apply the action in the block to each element, returning array' do
+        it 'should replace value of each element with the value returned by block' do
           pending "this is just the same as the example above"
         end
       end
