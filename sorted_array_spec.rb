@@ -31,10 +31,6 @@ describe SortedArray do
           expect { sorted_array.map {|el| el } }.to_not change { original_array }
         end
 
-        it "should_behave_like to all elements in sorted array" do
-          # some code 
-        end 
-
         it 'creates a new array containing the values returned by the block' do
           sorted_array.map { |el| el * 2 }.should == [4, 6, 8, 14, 18]
         end
@@ -48,29 +44,49 @@ describe SortedArray do
           sorted_array.map! {|el| el }.should_not == sorted_array
         end
 
-        it_should_behave_like "yield to all elements in sorted array", :map!
-
-        it 'should replace value of each element with the value returned by block' do
-          pending "this is just the same as the example above"
-        end
+      it_should_behave_like "yield to all elements in sorted array", :map!
+      end 
+      
+      it 'should replace value of each element with the value returned by block'  do
+        sorted_array.map! { |el| 7 * el }
+        sorted_array.internal_arr.should == (source.map { |ele| 7 * ele})
       end
+      
+      
     end
   end
 
-  describe :find do
-
-    it "takes in a block that tests for equality" do
-    sorted_array.include? { |value|  }
-
-      # pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
+   describe :find do
+    it "should return the first element where block is not false" do
+      sorted_array.find { |i| i % 2 == 0 }.should == (source.select{|i| i % 2 == 0}.shift)
     end
+
+    it "should return nil if no match is detected" do
+      sorted_array.find { |i| i % 10 == 0 }.should == (nil)
+    end
+
   end
 
-  describe :inject do
-    it_should_behave_like "yield to all elements in sorted array", :inject
+  describe :inject do 
 
-    it "does not currently have any examples for it" do
-      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-inject"
+   it 'should be able to return the sum of the numbers in the array' do
+      sorted_array.inject { |sum, num| sum + num }.should ==  25 
     end
-  end
+
+    it 'should take a starting value for the accumulator' do
+      sorted_array.inject(10) { |sum, num| sum + num }.should == 35
+    end
+
+    it "should be able to return the product of the array" do
+      sorted_array.inject { |sum, num| sum * num }.should == 1512
+    end
+  end 
+  
 end
+
+
+
+
+
+
+
