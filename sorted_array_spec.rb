@@ -31,10 +31,12 @@ describe SortedArray do
           expect { sorted_array.map {|el| el } }.to_not change { original_array }
         end
 
-        it_should_behave_like "yield to all elements in sorted array", :map
+        it "should_behave_like to all elements in sorted array" do
+          # some code 
+        end 
 
         it 'creates a new array containing the values returned by the block' do
-          pending "fill this spec in with a meaningful example"
+          sorted_array.map { |el| el * 2 }.should == [4, 6, 8, 14, 18]
         end
       end
     end
@@ -42,7 +44,8 @@ describe SortedArray do
     describe "that update the original array" do
       describe :map! do
         it 'the original array should be updated' do
-          pending "fill this spec in with a meaningful example"
+          original_array = sorted_array.internal_arr
+          sorted_array.map! {|el| el }.should_not == sorted_array
         end
 
         it_should_behave_like "yield to all elements in sorted array", :map!
@@ -55,10 +58,11 @@ describe SortedArray do
   end
 
   describe :find do
-    it_should_behave_like "yield to all elements in sorted array", :find
 
-    it "does not currently have any examples for it" do
-      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
+    it "takes in a block that tests for equality" do
+    sorted_array.include? { |value|  }
+
+      # pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
     end
   end
 
